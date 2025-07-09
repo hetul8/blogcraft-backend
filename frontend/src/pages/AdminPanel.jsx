@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BlogForm from '../components/BlogForm';
 
+const API = import.meta.env.VITE_API_URL;
+
 function AdminPanel() {
   const { token, logout } = useAuth();
   const [blogs, setBlogs] = useState([]);
@@ -18,7 +20,7 @@ function AdminPanel() {
   }, [token]);
 
   const fetchBlogs = async () => {
-    const res = await axios.get('/api/blogs', {
+    const res = await axios.get(`${API}/api/blogs`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setBlogs(res.data);
@@ -26,7 +28,7 @@ function AdminPanel() {
 
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this blog?')) return;
-    await axios.delete(`/api/blogs/${id}`, {
+    await axios.delete(`${API}/api/blogs/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     fetchBlogs();

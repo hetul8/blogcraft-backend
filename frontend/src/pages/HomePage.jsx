@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 
+const API = import.meta.env.VITE_API_URL;
+
 function HomePage() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('/api/blogs')
+    axios.get(`${API}/api/blogs`)
       .then(res => {
         if (Array.isArray(res.data)) setBlogs(res.data);
         else setBlogs([]);

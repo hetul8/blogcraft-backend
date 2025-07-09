@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API = import.meta.env.VITE_API_URL;
+
 function BlogForm({ blog, token, onClose }) {
   const [title, setTitle] = useState(blog ? blog.title : '');
   const [body, setBody] = useState(blog ? blog.body : '');
@@ -24,11 +26,11 @@ function BlogForm({ blog, token, onClose }) {
     setError('');
     try {
       if (blog) {
-        await axios.put(`/api/blogs/${blog._id}`, { title, body, snippet, draft }, {
+        await axios.put(`${API}/api/blogs/${blog._id}`, { title, body, snippet, draft }, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post('/api/blogs', { title, body, snippet, draft }, {
+        await axios.post(`${API}/api/blogs`, { title, body, snippet, draft }, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }

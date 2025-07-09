@@ -4,12 +4,14 @@ import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import { Helmet } from 'react-helmet';
 
+const API = import.meta.env.VITE_API_URL;
+
 function BlogPage() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/blogs/${id}`).then(res => setBlog(res.data));
+    axios.get(`${API}/api/blogs/${id}`).then(res => setBlog(res.data));
   }, [id]);
 
   if (!blog) return <div className="text-center py-16">Loading...</div>;

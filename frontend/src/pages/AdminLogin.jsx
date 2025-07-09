@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../state/AuthContext';
 
+const API = import.meta.env.VITE_API_URL;
+
 function AdminLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +16,7 @@ function AdminLogin() {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('/api/auth/login', { username, password });
+      const res = await axios.post(`${API}/api/auth/login`, { username, password });
       login(res.data.token);
       navigate('/admin/panel');
     } catch (err) {
