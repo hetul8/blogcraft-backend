@@ -1,0 +1,25 @@
+Build a complete blogging web application named "BlogCraft".
+
+🧱 STACK:
+- MERN (MongoDB, Express, React, Node.js)
+- Frontend: React + TailwindCSS
+- Backend: Express.js
+- Database: MongoDB via Mongoose
+
+🧩 FEATURES:
+- Home page with blog list (title, snippet, date)
+- Full blog post page
+- Admin panel (login → create, edit, delete blog)
+- REST API (GET, POST, PUT, DELETE routes)
+- Markdown support for blog body
+- Auto-save draft feature
+- Mobile responsive layout
+- SEO tags in React (title, description)
+
+🧪 BONUS:
+- Pagination
+- Deploy frontend to Vercel, backend to Render
+- Add environment variables file (.env) support
+
+💬 Generate full working code, include folder structure, and make it ready to deploy.
+Build a complete blogging web application named "BlogCraft".
